@@ -7,6 +7,8 @@ pub mod app;
 pub mod carabiner;
 pub mod config;
 pub mod expressions;
+#[cfg(feature = "gui")]
+pub mod gui;
 pub mod legacy;
 pub mod logs;
 pub mod outputs;
