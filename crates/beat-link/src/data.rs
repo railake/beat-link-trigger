@@ -467,6 +467,50 @@ impl CueList {
         CueList::sorted(entries)
     }
 
+    /// Parse the body of an ANLZ `PCOB` (cue list) tag (the bytes after the 12-byte
+    /// section header); call once per tag and merge.
+    pub fn from_anlz_pcob(body: &[u8]) -> CueList {
+        let mut entries = Vec::new();
+        if body.len() < 12 {
+            return CueList::default();
+        }
+        let count = bytes_to_number(body, 6, 2) as usize;
+        let mut pos = 12;
+        for _ in 0..count {
+            if pos + 0x24 > body.len() || &body[pos..pos + 4] != b"PCPT" {
+                break;
+            }
+            let len_entry = bytes_to_number(body, pos + 8, 4) as usize;
+            let hot = bytes_to_number(body, pos + 12, 4) as u8;
+            let kind = body[pos + 28];
+            let time = bytes_to_number(body, pos + 32, 4) as i64;
+            let loop_time = bytes_to_number(body, pos + 36, 4) as i64;
+            {
+                let is_loop = kind == 2;
+                entries.push(CueEntry {
+                    hot_cue_number: hot,
+                    is_loop,
+                    cue_position: time_to_half_frame(time),
+                    cue_time: time,
+                    loop_position: if is_loop { time_to_half_frame(loop_time) } else { 0 },
+                    loop_time: if is_loop { loop_time } else { 0 },
+                    comment: String::new(),
+                    color_id: 0,
+                    embedded_color: None,
+                    rekordbox_color: None,
+                });
+            }
+            pos += len_entry.max(0x24);
+        }
+        CueList::sorted(entries)
+    }
+
+    /// Merge two cue lists (e.g. memory points and hot cues).
+    pub fn merged(mut self, other: CueList) -> CueList {
+        self.entries.extend(other.entries);
+        CueList::sorted(self.entries)
+    }
+
     /// The first cue at or after `ms`.
     pub fn next_cue_after(&self, ms: i64) -> Option<&CueEntry> {
         self.entries.iter().find(|e| e.cue_time >= ms)

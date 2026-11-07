@@ -3,11 +3,18 @@
 //! Trigger events and automate shows in response to CDJ activity. This crate holds
 //! the application logic; the protocol lives in the `beat-link` crate.
 
+pub mod app;
 pub mod carabiner;
 pub mod config;
 pub mod expressions;
 pub mod legacy;
+pub mod logs;
 pub mod outputs;
+pub mod overlay;
+pub mod playlist;
+pub mod report;
+pub mod shows;
+pub mod simulator;
 pub mod triggers;
 
 /// The version of this program.
