@@ -1,0 +1,41 @@
+[package]
+name = "beat-link-trigger"
+description = "Trigger events and automate shows in response to CDJ activity (Rust rewrite)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+default-run = "beat-link-trigger"
+
+[[bin]]
+name = "beat-link-trigger"
+path = "src/main.rs"
+
+[features]
+default = ["gui", "midi"]
+gui = ["dep:eframe"]
+midi = ["dep:midir"]
+
+[dependencies]
+beat-link.workspace = true
+crossbeam-channel.workspace = true
+log.workspace = true
+parking_lot.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+clap = { version = "4.5", features = ["derive"] }
+directories = "5"
+minijinja = { version = "2", features = ["loader", "json"] }
+png = "0.17"
+rhai = { version = "1.20", features = ["sync", "serde"] }
+rosc = "0.10"
+tiny_http = "0.12"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+eframe = { version = "0.31", optional = true }
+midir = { version = "0.10", optional = true }
+
+[dev-dependencies]
+tempfile = "3"
