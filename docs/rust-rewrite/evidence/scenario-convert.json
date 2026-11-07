@@ -1,0 +1,9 @@
+{
+  "executable": "/home/user/beat-link-trigger/target/release/beat-link-trigger",
+  "arguments": ["--log-level", "warn", "--convert", "/home/user/beat-link-trigger/doc/modules/ROOT/attachments/BreakBuddy.bls", "--output", "out/BreakBuddy.blsj"],
+  "working_directory": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/convert",
+  "environment": {"HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/convert", "XDG_CONFIG_HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/convert/.config", "XDG_DATA_HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/convert/.local"},
+  "filesystem_observation_paths": ["./out"],
+  "timeout_ms": 30000,
+  "limits": {"output_bytes": 65536, "file_bytes": 1048576}
+}

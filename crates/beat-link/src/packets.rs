@@ -130,7 +130,7 @@ impl DeviceKind {
     pub fn for_number(number: u8) -> DeviceKind {
         if number < 0x10 {
             DeviceKind::Players
-        } else if number < 0x20 || number > 0x28 {
+        } else if !(0x20..=0x28).contains(&number) {
             DeviceKind::Collections
         } else {
             DeviceKind::Mixers

@@ -1418,7 +1418,7 @@ impl VirtualCdj {
         let mut distance = state.distance_from_beat();
         while self.is_playing()
             && ((distance < 0.0 && distance.abs() <= BeatSender::SLEEP_THRESHOLD)
-                || (distance >= 0.0 && distance <= BeatSender::BEAT_THRESHOLD + 1.0))
+                || (0.0..=BeatSender::BEAT_THRESHOLD + 1.0).contains(&distance))
         {
             thread::sleep(Duration::from_millis(2));
             state = self.playback_position();

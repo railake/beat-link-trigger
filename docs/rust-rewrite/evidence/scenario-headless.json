@@ -1,0 +1,9 @@
+{
+  "executable": "/home/user/beat-link-trigger/target/release/beat-link-trigger",
+  "arguments": ["--headless", "--offline", "--simulate", "2", "--run-for", "3", "--config", "demo.bltj", "--log-level", "info"],
+  "working_directory": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/headless",
+  "environment": {"HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/headless/home", "XDG_CONFIG_HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/headless/home/.config", "XDG_DATA_HOME": "/tmp/claude-0/-home-user-beat-link-trigger/355856cd-dec8-5447-bd20-5df1dff4a62b/scratchpad/rea/headless/home/.local"},
+  "filesystem_observation_paths": ["./home"],
+  "timeout_ms": 30000,
+  "limits": {"output_bytes": 65536, "file_bytes": 1048576}
+}

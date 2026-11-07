@@ -4,6 +4,11 @@
  <img align="right" width="275" height="250" alt="Beat Link Trigger"
       src="doc/modules/ROOT/images/BeatLink-logo-padded-left.png">
 
+> **Rust rewrite in progress:** this branch also contains a ground-up
+> rewrite of Beat Link Trigger (and the beat-link protocol library) in
+> Rust, under [`crates/`](crates/). See [RUST-REWRITE.md](RUST-REWRITE.md)
+> for how to build it, what changed, and a parity ledger.
+
 An integration environment for DJ performances focused on bridging
 Pioneer DJ professional equipment to lighting, video, laser, and
 digital audio workstation software. Created as a way to trigger MIDI

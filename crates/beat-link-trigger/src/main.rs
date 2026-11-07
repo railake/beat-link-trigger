@@ -199,7 +199,9 @@ fn main() {
     }
 
     log::info!("Shutting down.");
-    if let Err(e) = app.save(None) {
+    // Like the Java version, the working state is kept in the preferences; files
+    // passed with --config are only written by an explicit Save.
+    if let Err(e) = app.save(Some(&prefs)) {
         log::warn!("Unable to save configuration: {e}");
     }
     app.shutdown();

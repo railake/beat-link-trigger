@@ -207,7 +207,8 @@ fn joins_network_receives_status_and_fetches_metadata() {
     assert!(status.is_playing());
     assert_eq!(status.rekordbox_id, 42);
     assert!(wait_for(Duration::from_secs(2), || link.virtual_cdj.tempo_master().is_some()));
-    assert!((link.virtual_cdj.master_tempo() - 128.0).abs() < 0.01);
+    // The master tempo is stored just after the master itself, as in beat-link.
+    assert!(wait_for(Duration::from_secs(2), || (link.virtual_cdj.master_tempo() - 128.0).abs() < 0.01));
 
     // Metadata and beat grid arrive from the fake dbserver.
     let (player, data) = rx.recv_timeout(Duration::from_secs(10)).expect("metadata delivered");
